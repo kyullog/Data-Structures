@@ -81,8 +81,8 @@ class DoublyLinkedList:
             self.head = self.head.next
             self.head.prev = None
 
-    """Wraps the given value in a ListNode and inserts it 
-  as the new tail of the list. Don't forget to handle 
+    """Wraps the given value in a ListNode and inserts it
+  as the new tail of the list. Don't forget to handle
   the old tail node's next pointer accordingly."""
 
     def add_to_tail(self, value):
@@ -117,7 +117,16 @@ class DoublyLinkedList:
   List and inserts it as the new head node of the List."""
 
     def move_to_front(self, node):
-        pass
+        prev_node = node.prev
+        next_node = node.next
+
+        if prev_node == None:
+            return
+        else:
+            node.prev = None
+            self.head.prev = node
+            node.next, self.head = self.head, node
+            prev_node.next, next_node.prev = next_node, prev_node
 
     """Removes the input node from its current spot in the 
   List and inserts it as the new tail node of the List."""
