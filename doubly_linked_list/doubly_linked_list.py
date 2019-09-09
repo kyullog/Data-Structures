@@ -104,6 +104,8 @@ class DoublyLinkedList:
             self.tail = new_tail
 
             new_tail.next = None
+        self.length += 1
+
 
     """Removes the List's current tail node, making the
   current tail's previous node the new tail of the List.
