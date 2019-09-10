@@ -32,13 +32,13 @@ class BinarySearchTree:
         # if self.value is the target,
         # return True
         if self.value == target:
-        # else if target < self.value
-        # check if we have a left
-        # if not return False
-        # if so call left.contains on the target
+            # else if target < self.value
+            # check if we have a left
+            # if not return False
+            # if so call left.contains on the target
             return True
         elif target < self.value:
-            if self.left == None:
+            if self.left is None:
                 return False
             else:
                 return self.left.contains(target)
@@ -47,24 +47,29 @@ class BinarySearchTree:
         # else, return False
         # if so, call self.right.contains on the target
         else:
-            if self.right == None:
+            if self.right is None:
                 return False
             else:
                 return self.right.contains(target)
-
 
     def get_max(self):
         # if we have a right
         # return right's get_max
         # otherwise return self.value
-
-        pass
+        if self.right is None:
+            return self.value
+        else:
+            return self.right.get_max()
 
     def for_each(self, cb):
         cb(self.value)
         # if self.right
         # cal rightie's for_each with the cb
-
+        if self.right != None:
+            self.right.for_each(cb)
         # if self.left
         # leftie's for_each with the cb
-        pass
+        if self.left != None:
+            self.left.for_each(cb)
+        else:
+            return
