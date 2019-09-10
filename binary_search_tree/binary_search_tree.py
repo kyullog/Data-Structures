@@ -31,18 +31,27 @@ class BinarySearchTree:
     def contains(self, target):
         # if self.value is the target,
         # return True
-
+        if self.value == target:
         # else if target < self.value
         # check if we have a left
-        # if so call left.contains on the target
         # if not return False
-
+        # if so call left.contains on the target
+            return True
+        elif target < self.value:
+            if self.left == None:
+                return False
+            else:
+                return self.left.contains(target)
         # otherwise the target must be greater than self.value
         # check if we have a right
-        # if so, call self.right.contains on the target
         # else, return False
+        # if so, call self.right.contains on the target
+        else:
+            if self.right == None:
+                return False
+            else:
+                return self.right.contains(target)
 
-        pass
 
     def get_max(self):
         # if we have a right
