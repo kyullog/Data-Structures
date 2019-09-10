@@ -83,8 +83,8 @@ We need two constants, and two data structures
         else:
             # Case 2
             if self.current_nodes == self.max_number_of_nodes:
-                self.order.remove_from_tail()
                 del self.cache[self.order.tail.value[0]]
+                self.order.remove_from_tail()
                 self.current_nodes -= 1
             # Case 1
             self.order.add_to_head((key, value))
