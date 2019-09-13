@@ -33,6 +33,11 @@ We shall use the DLL!
 We need two constants, and two data structures
     """
 
+    # def __init__(self, limit=10):
+    #     self.max_number_of_nodes = limit
+    #     self.current_nodes = 0
+    #     self.cache = {}
+    #     self.order = DoublyLinkedList()
     def __init__(self, limit=10):
         self.max_number_of_nodes = limit
         self.current_nodes = 0
@@ -49,7 +54,6 @@ We need two constants, and two data structures
 
     def get(self, key):
         if key in self.cache:
-
             node = self.cache[key]
             value = node.value[1]
             self.order.move_to_front(node)
@@ -83,7 +87,9 @@ We need two constants, and two data structures
         else:
             # Case 2
             if self.current_nodes == self.max_number_of_nodes:
-                del self.cache[self.order.tail.value[0]]
+                oldest_thing = self.order.tail
+                old_key = oldest_thing.value[0]
+                del self.cache[old_key]
                 self.order.remove_from_tail()
                 self.current_nodes -= 1
             # Case 1
