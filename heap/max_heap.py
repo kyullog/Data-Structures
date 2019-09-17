@@ -31,4 +31,18 @@ class Heap:
                 break
 
     def _sift_down(self, index):
-        pass
+        max_index = len(self.storage) - 1
+        left_child = (2 * index) + 1
+
+        while left_child <= max_index:
+            right_child = left_child + 1
+            if right_child <= max_index and self.storage[right_child] > self.storage[left_child]:
+                left_child = right_child
+
+            if self.storage[left_child] > self.storage[index]:
+                self.storage[left_child], self.storage[index] = self.storage[index], self.storage[left_child]
+                index = left_child
+                left_child = (2 * index) + 1
+
+            else:
+                break
